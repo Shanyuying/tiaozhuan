@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			div{
+				width: 1000px;
+				margin: 0 auto;
+			}
+			li{
+				padding: 5px 20px;
+				float: left;
+				margin-left: 20px;
+				cursor: pointer;
+			}
+			img{
+				width: 100%;
+			}
+			li a{
+				color: black;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<ul>
+			</ul>
+			<p></p> 
+		</div>
+	</body>
+</html>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+  <script type="text/javascript">
+	$(function(){
+			$.ajax({
+				url:"http://localhost:3000/item/list",
+				type:"get",				
+				success:function(e){
+					for(i in e){
+						$('ul').append('<li><a href="index2.html?id='+e[i].id+'">'+e[i].name+'</a></li>')
+					}
+				}
+			});
+	})		 	
+  </script>

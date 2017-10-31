@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+	</head>
+	<body>	
+	</body>
+	<script type="text/javascript">
+		$(function(){
+			var b=window.location.href.split('?')[1].split('=')[1]		
+			if(b=='news'){
+				$.ajax({
+					url:"http://localhost:3000/item/detail",
+					type:"GET",
+					success:function(e){
+						for(i in e){
+							$('body').append("<a href='index.html?id="+e[i].id+"'>"+e[i].name+'</a><br/>')
+						}
+					}
+				});
+			}else{
+				$.ajax({
+					url:"http://localhost:3000/item/detail",
+					type:"POST",
+					data:{'id':b},
+					success:function(e){
+							$('body').append('<div>详情:'+e[0].detail+'</div>')
+					}
+				});
+			}
+			
+		})
+	</script>
+</html>
