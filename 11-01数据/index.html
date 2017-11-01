@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	</head>
+<body>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="exampleInputName2">Name</label>
+            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
+        </div>
+        <button type="button" class="btn btn-default">Send invitation</button>
+    </form>
+
+    <ul>
+        <li class="te">id</li>
+        <li>name</li>
+        <li>age</li> 
+    </tr>
+   
+    <ul class="tab"></ul>
+</body>
+</html> 
+
+<script>
+        $(function () {
+            $("button").click(function () {
+                var  aaaa= $("#exampleInputName2").val(); 
+                $.ajax({
+                    url:"http://localhost:3000/list",
+                    type:'POST',
+                    data:{
+                        a:aaaa
+                    },
+                    success:function (e) {
+                    	console.log(aaaa)
+                        var str = ""
+                        for(var i in e){
+                            str += "<li><span>"+e[i].id+"</span><span>"+e[i].name+"</span><span>"+e[i].age+"</span></li>"
+                        }
+                        $("ul").eq(1).html(str)
+                    }
+                })
+            })
+        })
+    </script>
